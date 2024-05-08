@@ -35,8 +35,7 @@ function getHumanChoice() {
     return str2;
 }
 
-let humanScore = 0;
-let computerScore = 0;
+
 
 //pseudocode to play a single round
 //create a function named playRound taking humanChoice and computerChoice as parameter/arguments
@@ -52,29 +51,57 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
     console.log(`computer chose ${computerSelection} and you chose ${humanSelection} so...`)
     if (humanSelection === computerSelection) {
-        console.log("It's draw!");
+        console.log("This round's a draw!");
     } else if (computerSelection === "rock" && humanSelection === "paper") {
-        console.log("You win!");
+        console.log("You win this round!");
         humanScore++;
     } else if (computerSelection === "rock" && humanSelection === "scissor") {
-        console.log("You lose!");
+        console.log("You lose this round!");
         computerScore++;
     } else if (computerSelection === "scissor" && humanSelection === "paper") {
-        console.log("You lose!");
+        console.log("You lose this round!");
         computerScore++;
     } else if (computerSelection === "scissor" && humanSelection === "rock") {
-        console.log("You win!");
+        console.log("You win this round!");
         humanScore++;
     } else if (computerSelection === "paper" && humanSelection === "scissor") {
-        console.log("You win!");
+        console.log("You win this round!");
         humanScore++;
     } else {
-        console.log("You lose!");
+        console.log("You lose this round!");
         computerScore++;
     }
   }
-  
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-  
-playRound(humanSelection, computerSelection);
+
+let humanScore = 0;
+let computerScore = 0;
+
+
+//pseudocode to Write the logic to play the entire game
+//Mygame will play 5 rounds. write a function named playGame that calls playRound to play 5 rounds, keeps track of the scores and declares a winner at the end.
+//Create a funtion named playGame
+//FOR i = 0 to 5 to play 5 rounds
+//each iteration calls the playRound function once
+//after all rounds, compare the score
+//if humanScore is higher than computerScore, human wins, else computer wins
+
+function playGame() {
+    console.log("Let's play a game of Rock Paper Scissor!")
+    for (let i = 0; i < 5; i++) {
+        console.log(`round ${i + 1}:`);
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+    if (humanScore > computerScore) {
+        console.log("You won the game");
+    } else {
+        console.log("You lose this game");
+    }
+}
+
+if(confirm("Wanna a play a game of Rock Paper Scissor?")) {
+    playGame();
+} else {
+    console.log("alright, bye!");
+}
