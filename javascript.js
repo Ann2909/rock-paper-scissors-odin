@@ -27,11 +27,54 @@ function getComputerChoice() {
 function getHumanChoice() {
     let str1, str2;
     str1 = prompt("Choose rock, paper or scissor by typing in here: ", "rock");
-    str2= str1.toLowerCase();
+    str2 = str1.toLowerCase();
     if (str2 !== "rock" && str2 !== "paper" && str2 !== "scissor") {
         str1 = prompt("Choose rock, paper or scissor only, don't type anything else", "(example) rock");
         str2 = str1.toLowerCase();
     }
-    let userChoice = str2;
-    return userChoice;
+    return str2;
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+//pseudocode to play a single round
+//create a function named playRound taking humanChoice and computerChoice as parameter/arguments
+//the logic is rock beats scissor, scissor beats paper and paper beats rock
+//if humanChoice and computerChoice are the same, no score increase, display "a draw"
+//if computerChoice is rock and humanChoice is paper, human wins, humanScore increments by 1, display you win
+// ...                 rock ..                 scissor...         computerScore increments by 1, display computer wins
+//                     scissor                 paper              computerScore increments by 1, ...
+//                     scissor                 rock               humanScore increments by 1, ...
+//                     paper                   scissor            humanScore increments by 1, ...
+//                     paper                   rock               computerScore increments by 1, ...
+
+function playRound(humanChoice, computerChoice) {
+    console.log(`computer chose ${computerSelection} and you chose${humanSelection} so...`)
+    if (humanSelection === computerSelection) {
+        console.log("It's draw!");
+    } else if (computerSelection === "rock" && humanSelection === "paper") {
+        console.log("You win!");
+        humanScore++;
+    } else if (computerSelection === "rock" && humanSelection === "scissor") {
+        console.log("You lose!");
+        computerScore++;
+    } else if (computerSelection === "scissor" && humanSelection === "paper") {
+        console.log("You lose!");
+        computerScore++;
+    } else if (computerSelection === "scissor" && humanSelection === "rock") {
+        console.log("You win!");
+        humanScore++;
+    } else if (computerSelection === "paper" && humanSelection === "scissor") {
+        console.log("You win!");
+        humanScore++;
+    } else {
+        console.log("You lose!");
+        computerScore++;
+    }
+  }
+  
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+  
+playRound(humanSelection, computerSelection);
