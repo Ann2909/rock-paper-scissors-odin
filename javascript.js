@@ -22,13 +22,13 @@ function getComputerChoice() {
 //create a function named getHumanChoice
 //prompt the user to type in rock, paper or scissor, default value is rock and assign to a variable
 //include all forms of rock, paper and scissor, case insensitive string method to another variable
-//if user type something else, prompt again
+//if user type something else, prompt again and keep prompting again until user type in a rock, paper or scissor
 
 function getHumanChoice() {
     let str1, str2;
     str1 = prompt("Choose rock, paper or scissor by typing in here: ", "rock");
     str2 = str1.toLowerCase();
-    if (str2 !== "rock" && str2 !== "paper" && str2 !== "scissor") {
+    while (str2 !== "rock" && str2 !== "paper" && str2 !== "scissor") {
         str1 = prompt("Choose rock, paper or scissor only, don't type anything else", "(example) rock");
         str2 = str1.toLowerCase();
     }
@@ -50,7 +50,7 @@ let computerScore = 0;
 //                     paper                   rock               computerScore increments by 1, ...
 
 function playRound(humanChoice, computerChoice) {
-    console.log(`computer chose ${computerSelection} and you chose${humanSelection} so...`)
+    console.log(`computer chose ${computerSelection} and you chose ${humanSelection} so...`)
     if (humanSelection === computerSelection) {
         console.log("It's draw!");
     } else if (computerSelection === "rock" && humanSelection === "paper") {
