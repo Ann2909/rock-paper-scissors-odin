@@ -48,7 +48,7 @@ function getHumanChoice() {
 //                     paper                   scissor            humanScore increments by 1, ...
 //                     paper                   rock               computerScore increments by 1, ...
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanSelection, computerSelection) {
     console.log(`computer chose ${computerSelection} and you chose ${humanSelection} so...`)
     if (humanSelection === computerSelection) {
         console.log("This round's a draw!");
